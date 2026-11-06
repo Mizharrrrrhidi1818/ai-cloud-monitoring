@@ -1,0 +1,21 @@
+# Append missing rules to your EXISTING .gitignore; do not overwrite blindly.
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+backups/
+*.dump
+*.backup
+*.csv
+data/
+*.joblib
+*.pkl
+*.pem
+*.key
+id_rsa
+id_ed25519
+ai-cloud-monitoring-cloud*/
+# The historical dashboard is a standalone HTML and remains included:
+# portfolio/dashboard-offline.html
