@@ -1,0 +1,9 @@
+# Installation instructions (PowerShell)
+
+1. Keep the existing project and executable source files. This ZIP adds README, docs, portfolio, results summary and placeholder screenshots directory.
+2. Extract this ZIP, then copy its **contents** into C:\Users\Mizhar-Universe\Projects\ai-cloud-monitoring. Check README for conflicting changes before overwriting an existing README; preserve your original as a backup.
+3. Append needed entries from GITIGNORE_ADDITIONS.txt to your existing .gitignore.
+4. Verify `git check-ignore -v .env` and inspect `git diff --cached --name-only` before committing.
+5. Open portfolio/dashboard-offline.html locally to preview the static dashboard.
+6. Use `git add .`, `git commit -m "Publish v1.0 documentation and results"`, `git branch -M main`, then `git push -u origin main` after security review.
+7. DO NOT include `.env`, raw full VPS training CSV, backup dumps, ssh keys or unreviewed model binaries.
