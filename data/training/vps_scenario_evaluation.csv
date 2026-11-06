@@ -1,0 +1,7 @@
+scenario,cpu_percent,memory_percent,disk_percent,expected,prediction,score,actual,match
+Typical VPS workload,3,58,47,NORMAL,1,0.2346443872590917,NORMAL,True
+High CPU,98,58,47,ANOMALY,-1,-0.07212024500035352,ANOMALY,True
+High RAM,3,98,47,ANOMALY,-1,-0.02922139772936927,ANOMALY,True
+Disk almost full,3,58,99,ANOMALY,1,0.2346443872590917,NORMAL,False
+Multiple overloads,99,99,99,ANOMALY,-1,-0.1415112314701239,ANOMALY,True
+Moderate CPU activity,35,58,47,NORMAL,-1,-0.07212024500035352,ANOMALY,False

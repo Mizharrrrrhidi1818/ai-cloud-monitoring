@@ -1,0 +1,81 @@
+
+name: ai-cloud-monitoring-cloud
+
+services:
+
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: cloud_monitoring
+      POSTGRES_USER: monitor_app
+      POSTGRES_PASSWORD: bottle
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U monitor_app -d cloud_monitoring
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  dashboard:
+    build: .
+    env_file:
+      - .env
+    environment:
+      DB_HOST: postgres
+      DB_USER: monitor_app
+      DB_NAME: cloud_monitoring
+    command:
+      - python
+      - -m
+      - streamlit
+      - run
+      - dashboards/dashboard.py
+      - --server.address=0.0.0.0
+      - --server.port=8501
+    ports:
+      - "127.0.0.1:8502:8501"
+    depends_on:
+      - postgres:
+    restart: unless-stopped
+
+  ai-detector:
+    build: .
+    env_file:
+      - .env
+    environment:
+      DB_HOST: postgres
+      DB_USER: monitor_app
+      DB_NAME: cloud_monitoring
+    command:
+      - python
+      - src/ml/detect_anomaly.py
+    volumes:
+      - ./models:/app/models:ro
+    depends_on:
+      - postgres:
+    restart: unless-stopped
+
+  alert-manager:
+    build: .
+    env_file:
+      - .env
+    environment:
+      DB_HOST: postgres
+      DB_USER: monitor_app
+      DB_NAME: cloud_monitoring
+    command:
+      - python
+      - src/alerts/alert_manager.py
+    depends_on:
+      - postgres:
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

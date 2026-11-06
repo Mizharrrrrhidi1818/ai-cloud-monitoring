@@ -1,0 +1,10 @@
+psutil
+psycopg[binary]
+python-dotenv
+pandas
+numpy
+scikit-learn
+matplotlib
+joblib
+streamlit>=1.37
+plotly
