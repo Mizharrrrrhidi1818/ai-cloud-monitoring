@@ -1,8 +1,8 @@
-# AI Cloud Monitoring & Anomaly Detection | Ubuntu VPS
+# AI Cloud Monitoring & Anomaly Detection | Ubuntu VPS (Sumopod)
 
 **Python · Docker Compose · PostgreSQL 17 · Isolation Forest · Streamlit · systemd**
 
-A self-hosted cloud infrastructure monitoring prototype deployed on an Ubuntu VPS. A host-level Python collector records CPU, memory, and disk utilization in PostgreSQL; an Isolation Forest service scores new samples; a separate alert manager applies resource thresholds and cooldown; a Streamlit dashboard visualizes events. Backup automation and rollback-oriented deployment were also tested.
+A self-hosted cloud infrastructure monitoring prototype deployed on an Ubuntu VPS (Sumopod). A host-level Python collector records CPU, memory, and disk utilization in PostgreSQL; an Isolation Forest service scores new samples; a separate alert manager applies resource thresholds and cooldown; a Streamlit dashboard visualizes events. Backup automation and rollback-oriented deployment were also tested.
 
 > **Release state: v1.0 candidate.** Repository publication and final production alert-policy verification are separate from successful earlier tests. The VPS-specific candidate model was evaluated **offline on Windows** and has **not been confirmed deployed to production**. The static dashboard below is a historical results illustration, **not live monitoring**.
 
