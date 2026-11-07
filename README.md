@@ -79,6 +79,3 @@ For operational configuration see [deployment](docs/deployment.md). Never commit
 
 This is an educational/portfolio prototype, **not a production-certified service**. Offline model evaluation is not labeled incident detection; deployment and rollback require an explicit change window; persistent app availability has not been validated by a full server reboot test. Current evidence describes a historical snapshot, not a live service availability guarantee.
 
-## License
-
-No license selected yet. All rights reserved unless an explicit license is added.
